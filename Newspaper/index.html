@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+   
+   <script>
+        // Array of 4 different website URLs
+        var urlArray = [
+    "https://img.wattpad.com/569be8c04024328f501dfd68adf93af9f0a375f1/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f77792d74765572574542737167773d3d2d3533383230383030342e313531353366376266386433306537393337373039323332383430382e676966",
+    "https://i.postimg.cc/cJJRbYvr/slytherin-house-slytherin.gif",
+    "https://img.wattpad.com/ae14fbf7409998ef1628c59c9227212516e93316/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f776174747061642d6d656469612d736572766963652f53746f7279496d6167652f5f7664545678594343522d5a32773d3d2d3638383135353036342e313537653263646562363936306662633437323732393035373437302e676966",
+    "https://media.tenor.com/vXi3B3nGoOoAAAAC/ravenclaw-house-ravenclaw.gif"
+];
+
+function randomUrl() {
+    var randomNumber = Math.floor(Math.random() * urlArray.length);
+    var newUrl = urlArray[randomNumber];
+    window.location.href = newUrl;
+}
+    </script>
+
+    <title>The Daily Prophet</title>
+</head>
+<body>
+    <h1>The Daily Prophet</h1>
+    
+    <aside>
+        <div>
+          <div class="issue1">Issue #1</div>
+          <div class="date">Tuesday, 01 June, 2021</div>
+          <div class="cost">7 Kunts</div>
+        </div>
+      </aside>
+
+    <div class="container">
+        <div class="frontpage">
+            
+            <div class="fp-cell fp-cell--1">
+                <div class="fp-item">
+                    <h2 class="title--large main-title">Room of Requirement Reveals Mysterious Secrets!</h2>
+                    <div class="imgcontainer">
+                        <div class="parallax-image"></div>
+                    </div>
+                    <br>
+                    <div class="main-text">
+                        <p>IIn a surprising turn of events, the Room of Requirement at Hogwarts School of Witchcraft and Wizardry has once again lived up to its enigmatic reputation. Reports are flooding in about the room's recent manifestations, which are leaving both students and staff in awe.
+                        </p>
+                        <p>
+                            The Room of Requirement, known for transforming into whatever the seeker truly needs, has showcased a series of mysterious and intriguing forms. First, it appeared as a hidden library filled with ancient magical tomes. This discovery delighted several students who were in pursuit of forgotten spells and potions.</p>
+                            <p>
+                                Next, the room transformed into a whimsical magical menagerie, brimming with fantastic creatures and mythical beasts. Aspiring Magizoologists have seized the opportunity to study and interact with these extraordinary creatures, once thought to exist only in the realm of legends.</p>
+                            <p>
+                                Rumors suggest that the room has more revelations in store for those who venture to unlock its secrets. Could it be responding to a hidden need within Hogwarts, or is it simply toying with our curiosity? As the mystery unfolds<a href="roomofreq.html" class="readmore"> ...Read More</a>
+                            </p>
+                      </div> 
+                </div>
+            </div>
+            
+            <div class="fp-cell fp-cell--2">
+                <div class="fp-item tomriddle">
+                    <div class="content">
+                        <h2 class="title--large main-title" style="margin:0px;">Tom Riddle's Lost Diary Resurfaces, Unveiling Dark Secrets</h2>
+                        <div class="main-text" style="margin:15px;">
+                            <p>In a surprising turn of events, Tom Riddle's long-lost diary, a notorious artifact in the wizarding world, has resurfaced, shedding new light on the enigmatic past of the infamous Dark wizard who would later become known as Lord Voldemort.</p>
+                            <p>The diary, which was believed to be destroyed years ago, emerged during the excavation of an old wizarding estate, hidden away in the depths of the Forbidden Forest. Its discovery sent shockwaves through the magical community, leaving many to wonder about the diary's significance.</p>
+                            <p>The diary, which was believed to be destroyed years ago, emerged during the excavation of an old wizarding estate, hidden away in the depths of the<a href="tomriddle.html" class="readmore"> ...Read More</a></p>
+                        </div>
+                    </div>
+                    <div class="imgcontainer2">
+                        <div class="parallaximage2"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="fp-cell fp-cell--3">
+                <div class="fp-item">
+                    <a onclick="randomUrl()"; href="#">
+                        <h2 class="title--large main-title" style="text-align: center;">Lets get you sorted!</h2>
+                    <img class="sortinghat" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/3b23e537-1bf4-4de8-b248-2b0691e3b916/d5yg6mv-fab2c857-6533-4d4e-abb0-5e5cebee01b5.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzNiMjNlNTM3LTFiZjQtNGRlOC1iMjQ4LTJiMDY5MWUzYjkxNlwvZDV5ZzZtdi1mYWIyYzg1Ny02NTMzLTRkNGUtYWJiMC01ZTVjZWJlZTAxYjUuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.v9f_E_AH56hL_DIqsdiJso4MgwvfG_tLjyhR_v0_Jrw" alt="">
+                    </a>
+                </div>
+            </div>
+            
+            <div class="fp-cell fp-cell--4">
+                <div class="fp-item">
+                    <h2 class="title--large main-title" style="text-align: center;">You have recieved a new Mail!</h2> 
+                    <!-- delay this part maybe to match the gif -->
+                    <a href="acceptanceletter.html"><img class="mail" src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmt4MTU0YnNrdnd3NmZkeW9pNGtwMzFxMm15enhibXpvb2IxdjB1MyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ZYJg9QrpKHyzTHUdhK/giphy.gif" alt=""></a>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

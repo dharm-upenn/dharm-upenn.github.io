@@ -1,0 +1,390 @@
+@font-face {
+    font-family: creepy;
+    src: url('who asks satan.ttf');
+}
+
+:root{
+    --bordercolor: #b59a70;
+}
+
+body{
+    font-family: "EB Garamond", serif;
+    color: #1c1f33;
+    background: url("https://img.freepik.com/free-photo/cardboard-sheet-paper-abstract-texture-background_7182-2105.jpg?size=626&ext=jpg") repeat;
+    padding: 20px;
+    line-height: 1.3;
+    text-align: justify;
+    cursor: url("https://i.postimg.cc/Pf3TXT4k/wand.png"), auto;
+  }
+
+h1 {
+    font: 65px "Playfair Display SC";
+    font-weight: 800;
+    text-align: center;
+  }
+
+aside {
+    text-align: center;
+    padding: 3px 0;
+    border: solid #1c1f33;
+    border-width: 2px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 20px 0;
+  }
+
+  aside > div {
+    display: flex;
+    align-items: center;
+    border: solid #1c1f33;
+    border-width: 1px 0;
+  }
+  aside > div > div {
+    flex: 1;
+    padding: 8px;
+  }
+
+p{
+    line-height: 1.3;
+  }
+
+a{
+    text-decoration: none;
+    color: #1c1f33;
+}
+
+.container {
+    overflow-x: hidden;
+    border-top: 1px solid var(--bordercolor);
+    border-bottom: 1px solid var(--bordercolor);
+  }
+  
+  .frontpage {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1px;
+    margin: 0 -16px;
+    background-color: var(--bordercolor);
+  }
+  
+  .fp-cell {
+    background: url("https://img.freepik.com/free-photo/cardboard-sheet-paper-abstract-texture-background_7182-2105.jpg?size=626&ext=jpg");
+    padding: 16px;
+  }
+  
+  .fp-cell--1 {
+    grid-row: 1 / span 2;
+    padding-left: 32px;
+    border-left: 1px solid var(--bordercolor);
+
+  }
+  
+.fp-cell--2 {
+    grid-column: 2 / span 2;
+    padding-right: 32px;
+    border-right: 1px solid var(--bordercolor);
+  }
+
+.content{
+    grid-column: 1 / span 1;
+}
+
+.imgcontainer2{
+    grid-column: 2/span 1;
+}  
+
+.fp-cell--3 {
+    grid-column: 2;
+  }
+
+.fp-cell--4{
+    padding-right: 32px;
+  }
+  
+.fp-item {
+    background-color: transparent;
+    align-items: center;
+    justify-content: center;
+    min-height: 200px;
+    height: 100%;
+    overflow: hidden;
+  }
+
+.parallax-image, .parallaximage2, img:hover{
+    cursor: url("https://i.postimg.cc/h4MKrjSH/wandlit.png"), auto;
+    filter: grayscale(0%);
+  }
+  
+  .title--large{
+    padding: 0px 10px 0px 10px;
+  }
+
+  .main-text{
+    margin:50px 15px 15px 15px;
+    text-align: justify;
+  }
+ 
+  .imgcontainer{
+    width: 350px;
+    height: 150px;
+    margin: 10px;
+  }
+
+  .parallax-image{
+    background-image: url("https://i.postimg.cc/fRShwPWW/Room-of-Requirement.gif");
+    height: 220px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position:5px -20px;
+    background-size: 500px 575px;
+    position: sticky;
+      }
+
+.readmore{
+    text-decoration: none;
+    color: #8d7a20;
+    font-size: small;
+    font-weight: 700;
+}
+
+.tomriddle{
+        display: flex;
+      }
+
+.imgcontainer2{
+        width: 200%;
+        height:95%;
+        margin: 10px;
+        border: 1px solid #1c1f33;
+    }
+    
+.parallaximage2{
+        background-image: url("https://i.pinimg.com/originals/39/e2/ea/39e2ea25f245e719311e525bbcd393d6.gif");
+        height: 450px;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: 650px;
+        background-size: 800px 610px;
+        position: sticky;
+    }
+
+.sortinghat{
+    width: 350px;
+    height:350px;
+    filter: grayscale(100%);
+    transition: 0.5s ease;
+}
+
+.mail{
+    width:350px;
+    height: 250px;
+    filter: grayscale(100%);
+    transition: 0.5s ease;
+
+}
+
+.backbutton{
+    outline: none;
+    border: none;
+    background: transparent;
+    width: 100px;
+    height: 50px;
+    position: relative;
+    left: -580px
+}
+
+
+
+/* Tom Riddle Dairy*/
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+
+.tommy{
+  height: calc(100vh - 10em);
+  padding: 4em;
+  color: #b80000;
+  font-family: 'creepy';  
+  font-size: 24px;
+  letter-spacing: 4px;
+}
+
+.line-1{
+    position: relative;
+    top: 0%;  
+    width: 10px;
+    margin: 0 auto;
+    border-right: 2px solid #b80000;
+    font-size: 200%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+
+.line-2{
+    position: relative;
+    top: 10%;  
+    width: 500px;
+    margin: 0 auto;
+    border-right: 2px solid #b80000;
+    font-size: 150%;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+
+.line-3{
+    position: relative;
+    top: 11%;  
+    width: 500px;
+    margin: 0 auto;
+    border-right: 2px solid #b80000;
+    font-size: 150%;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+
+.line-4{
+    position: relative;
+    top: 13%;  
+    width: 500px;
+    margin: 0 auto;
+    border-right: 2px solid #b80000;
+    font-size: 150%;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);    
+}
+
+/* Animation */
+.anim-typewriter{
+  animation: typewriter 4s steps(25) 1s 1 normal both,
+             blinkTextCursor 500ms steps(25) infinite normal;
+}
+
+.anim-typewriter2{
+    animation: typewriter2 4s steps(30) 1s 1 normal both,
+               blinkTextCursor 500ms steps(30) infinite normal;
+               animation-delay: 5s;
+
+}
+
+.anim-typewriter3{
+    animation: typewriter3 4s steps(30) 1s 1 normal both,
+               blinkTextCursor 500ms steps(30) infinite normal;
+               animation-delay: 9.5s;
+}
+
+.anim-typewriter4{
+    animation: typewriter4 4s steps(35) 1s 1 normal both,
+               blinkTextCursor 500ms steps(35) infinite normal;
+               animation-delay: 13.5s;
+}
+
+@keyframes typewriter{
+  from{width: 0;}
+  to{width: 380px;}
+}
+
+@keyframes typewriter2{
+    from{width: 0;}
+    to{width: 625px;}
+  }
+
+@keyframes typewriter3{
+  from{width: 0;}
+  to{width: 901px;}
+}
+
+@keyframes typewriter4{
+    from{width: 0;}
+    to{width: 989px;}
+  }
+
+@keyframes blinkTextCursor{
+  from{border-right-color: #b80000;}
+  to{border-right-color: transparent;}
+}
+
+/* Room Of Req */
+#roomofreq {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    text-align: center;
+}
+
+
+
+.roomofreq-image-container {
+    display: flex;
+    position: relative;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.roomofreqimg {
+    width: 450px;
+    height: 450px;
+}
+
+#img1 {
+    position: absolute;
+    top: 0;
+    left: 25px;
+    opacity: 100;
+    transition: opacity 0.5s;
+}
+
+#img2 {
+    position: relative;
+    top: 0px;
+    left: 25px;
+    opacity: 0;
+    transition: 0.1s ease-in;
+    width: 450px;
+    height: 450px;
+}
+
+.changed-text{
+    display: none;
+    position: absolute;
+    top: 190px;
+    left: 88px;
+    color: rgb(101, 101, 101);
+    font-size: 28px;
+    transform: rotate(275deg);
+    transition: display 0.5s;
+}    
+
+#img2:hover{
+    opacity: 1;
+}
+
+.roomofreq-image-container:hover .changed-text{
+    display: block;
+
+}
+
+/* Accepatnce Letter */
+.container {
+    position: relative;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+  }
+  
+#acceptletter {
+   width: 100%;
+   height: auto;
+   justify-content: center;
+   align-self: center;
+   opacity: 40%;
+  }
