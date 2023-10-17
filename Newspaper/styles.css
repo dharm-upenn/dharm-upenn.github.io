@@ -51,6 +51,7 @@ p{
 a{
     text-decoration: none;
     color: #1c1f33;
+    cursor: url("https://i.postimg.cc/Pf3TXT4k/wand.png"), auto;
 }
 
 .container {
@@ -101,6 +102,14 @@ a{
 .fp-cell--4{
     padding-right: 32px;
   }
+
+.fp-cell--5 {
+    grid-column: 1 / span 3;
+    padding-right: 32px;
+    border-right: 1px solid var(--bordercolor);
+    align-content: center;
+    justify-content: center;
+  }
   
 .fp-item {
     background-color: transparent;
@@ -111,7 +120,12 @@ a{
     overflow: hidden;
   }
 
-.parallax-image, .parallaximage2, img:hover{
+.parallax-image, .parallaximage2, .parallaximage3, img:hover{
+    cursor: url("https://i.postimg.cc/h4MKrjSH/wandlit.png"), auto;
+    filter: grayscale(0%);
+  }
+
+.parallaximage3:hover, .parallax-image:hover, .parallaximage2:hover{
     cursor: url("https://i.postimg.cc/h4MKrjSH/wandlit.png"), auto;
     filter: grayscale(0%);
   }
@@ -139,13 +153,21 @@ a{
     background-position:5px -20px;
     background-size: 500px 575px;
     position: sticky;
+    filter: grayscale(100%);
+    transition: 0.5s ease;
       }
 
 .readmore{
     text-decoration: none;
-    color: #8d7a20;
-    font-size: small;
+    color: #8d7b20a2;
+    font-size: 14px;
     font-weight: 700;
+    cursor: url("https://i.postimg.cc/h4MKrjSH/wandlit.png"), auto;
+}
+
+.readmore:hover{
+  color: #463d10;
+  border-bottom: 2px double #463d10;
 }
 
 .tomriddle{
@@ -167,6 +189,8 @@ a{
         background-position: 650px;
         background-size: 800px 610px;
         position: sticky;
+        filter: grayscale(100%);
+        transition: 0.5s ease;
     }
 
 .sortinghat{
@@ -182,6 +206,28 @@ a{
     filter: grayscale(100%);
     transition: 0.5s ease;
 
+}
+
+.imgcontainer3{
+  width: 700px;
+  height:300px;
+  margin: 10px;
+  border: 1px solid #1c1f33;
+  position: relative;
+  left: 250px;
+  overflow: hidden;
+}
+
+.parallaximage3{
+  background-image: url("https://i.postimg.cc/qRcNrqJN/cinema.png");
+  height: 300px;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: 288px 105px;
+  background-size: 700px auto;
+  position: sticky;
+  filter: grayscale(100%);
+  transition: 0.5s ease;
 }
 
 .backbutton{
