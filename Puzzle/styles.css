@@ -1,0 +1,843 @@
+/* number of columns/rows, don't forget to adjust the HTML value */
+::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+
+::-webkit-scrollbar-button {
+  width: 1px;
+  height: 1px;
+}
+
+body {
+  background: #547980;
+  color: #fff;
+  font-family: system-ui, sans-serif;
+}
+
+h1 {
+  font-size: 6vw;
+  margin: 0;
+  text-align: center;
+}
+
+p {
+  font-size: 1.3vw;
+  text-align: center;
+}
+
+div {
+  box-sizing: border-box;
+  margin:  auto;
+  display: block;
+}
+
+.horizontal-scroll-wrapper {
+  position: relative;
+  display: block;
+  width: 50vw;
+  height: 50vh;
+  max-height: 50vh;
+  margin: 0 auto;
+  padding-top: 1px;
+  background: #eefcff;
+  overflow-x: hidden;
+  transform: rotate(-90deg) translateY(-650px);
+  transform-origin: right top;
+}
+
+.horizontal-scroll-wrapper > div {
+  display: block;
+  padding: 5vw;
+  background: #cab;
+  transform: rotate(90deg);
+}
+.squares {
+  background: #000;
+  padding: 45vw 0 0 0;
+}
+
+.squares > div {
+  width: 42vw;
+  height: 90vh;
+  margin: 8px auto;
+}
+
+g {
+    --s: 60px; /* size of the puzzle */
+    --r: 12px;
+    display: grid;
+    width: fit-content;
+    border: 1px solid;
+    position: relative;
+    top: 28%;
+    left:20%;
+    grid: auto-flow var(--s)/repeat(5, var(--s));
+  }
+  
+  g:before {
+    content: "Context";
+    color: #fff;
+    font-size: 10px;
+    font-weight: bold;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+    width: calc(4*var(--s)*0.5);
+    aspect-ratio: 1;
+    background: var(--i) 0/100% 100%;
+    display: grid;
+    padding: 2px;
+  }
+  
+  z {
+    display: grid;
+    position: relative;
+    pointer-events: none;
+    outline: 1px dashed;
+  }
+  
+  a {
+    grid-area: 1/1;
+    width: 0;
+    transition: 0s 0.2s;
+    pointer-events: initial;
+  }
+  
+  b {
+    grid-area: 1/1;
+    z-index: 2;
+    display: grid;
+    filter: drop-shadow(0 0 2px red) drop-shadow(0 0 2px red);
+    cursor: grab;
+    pointer-events: initial;
+    height: calc(100% + var(--r));
+    width: calc(100% + var(--r));
+    place-self: start end;
+    --m:
+        radial-gradient(var(--r) at calc(50% - var(--r)/2) 0,#0000 98%,#000) var(--r) 0/100% var(--r) no-repeat,
+        radial-gradient(var(--r) at calc(100% - var(--r)) calc(50% - var(--r)/2),#0000 98%,#000) var(--r) 50%/100% calc(100% - 2*var(--r)) no-repeat,
+        radial-gradient(var(--r) at var(--r) calc(50% - var(--r)/2),#000 98%,#0000),
+        radial-gradient(var(--r) at calc(50% + var(--r)/2) calc(100% - var(--r)),#000 98%,#0000);
+  }
+  
+  b:before {
+    content: "";
+    background: var(--i) 0/calc(5*var(--s)) calc(5*var(--s));
+    -webkit-mask: var(--m);
+    mask: var(--m);
+  }
+  
+  z:first-child b {
+    height: calc(100% + var(--r));
+    width: 100%;
+    --m:
+        radial-gradient(var(--r) at 100% calc(50% + var(--r)/2),#0000 98%,#000)
+         0 calc(-1*var(--r)) no-repeat,
+        radial-gradient(var(--r) at 50% calc(100% - var(--r)),#000 98%,#0000) ;
+  }
+  
+  z:nth-child(-n+4):not(:first-child) b {
+    place-self: start end;
+    height: calc(100% + var(--r));
+    width: calc(100% + var(--r));
+    --m:
+        radial-gradient(var(--r) at calc(100% - var(--r)) calc(50% + var(--r)/2),#0000 98%,#000)
+         var(--r) calc(-1*var(--r)) no-repeat,
+        radial-gradient(var(--r) at var(--r) calc(50% - var(--r)/2),#000 98%,#0000),
+        radial-gradient(var(--r) at calc(50% + var(--r)/2) calc(100% - var(--r)),#000 98%,#0000) ;
+  }
+  
+  z:nth-child(5) b {
+    place-self: start end;
+    height: calc(100% + var(--r));
+    width: calc(100% + var(--r));
+    --m:
+        linear-gradient(#000 0 0) var(--r) calc(-1*var(--r)) no-repeat,
+        radial-gradient(var(--r) at var(--r) calc(50% - var(--r)/2),#000 98%,#0000),
+        radial-gradient(var(--r) at calc(50% + var(--r)/2) calc(100% - var(--r)),#000 98%,#0000) ;
+  }
+  
+  z:nth-child(5n+1):not(:first-child):not(:nth-last-child(5)) b {
+    height: calc(100% + var(--r));
+    width: 100%;
+    --m:
+        radial-gradient(var(--r) at 100% calc(50% - var(--r)/2),#0000 98%,#000) 50%/ 100% calc(100% - 2*var(--r)) no-repeat,
+        radial-gradient(var(--r) at 50% 0,#0000 98%,#000) 0 0/ 100% var(--r) no-repeat,
+        radial-gradient(var(--r) at 50% calc(100% - var(--r)),#000 98%,#0000) ;
+  }
+  
+  z:nth-last-child(5) b {
+    height: 100%;
+    width: 100%;
+    --m:
+        radial-gradient(var(--r) at 100% calc(50% - var(--r)),#0000 98%,#000) 0 var(--r) no-repeat,
+        radial-gradient(var(--r) at 50% 0,#0000 98%,#000) 0 0/ 100% var(--r) no-repeat;
+  }
+  
+  z:nth-child(5n):not(:nth-child(5)):not(:last-child) b {
+    place-self: start end;
+    height: calc(100% + var(--r));
+    width: calc(100% + var(--r));
+    --m:
+        radial-gradient(var(--r) at calc(50% - var(--r)/2) var(--r),#0000 98%,#000) var(--r) calc(-1*var(--r)) no-repeat,
+        radial-gradient(var(--r) at var(--r) calc(50% - var(--r)/2),#000 98%,#0000),
+        radial-gradient(var(--r) at calc(50% + var(--r)/2) calc(100% - var(--r)),#000 98%,#0000) ;
+  }
+  
+  z:last-child b {
+    place-self: end;
+    height: 100%;
+    width: calc(100% + var(--r));
+    --m:
+        radial-gradient(var(--r) at calc(50% - var(--r)/2) 0,#0000 98%,#000) var(--r) 0 no-repeat,
+        radial-gradient(var(--r) at var(--r) 50%,#000 98%,#0000) ;
+  }
+  
+  z:nth-last-child(-n+4):not(:last-child) b {
+    place-self: end;
+    height: 100%;
+    width: calc(100% + var(--r));
+    --m:
+        radial-gradient(var(--r) at calc(50% - var(--r)/2) 0,#0000 98%,#000) var(--r) 0/100% var(--r) no-repeat,
+        radial-gradient(var(--r) at calc(100% - var(--r)) calc(50% - var(--r)/2),#0000 98%,#000) var(--r) 100%/100% calc(100% - var(--r)) no-repeat,
+        radial-gradient(var(--r) at var(--r) 50%,#000 98%,#0000) ;
+  }
+  
+  z:nth-of-type(1) b {
+    transform: translate(100%, 100%) rotate(61deg) translate(0%, 200%) rotate(-56deg);
+  }
+  
+  z:nth-of-type(1) b:before {
+    background-position: 0% 0%;
+  }
+  
+  z:nth-of-type(2) b {
+    transform: translate(100%, -120%) rotate(104deg) translate(0%, 0%) rotate(-114deg);
+  }
+  
+  z:nth-of-type(2) b:before {
+    background-position: 25% 0%;
+  }
+  
+  z:nth-of-type(3) b {
+    transform: translate(280%, 100%) rotate(89deg) translate(0%, 0%) rotate(-85deg);
+  }
+  
+  z:nth-of-type(3) b:before {
+    background-position: 50% 0%;
+  }
+  
+  z:nth-of-type(4) b {
+    transform: translate(0%, 430%) rotate(43deg) translate(0%, 0%) rotate(-50deg);
+  }
+  
+  z:nth-of-type(4) b:before {
+    background-position: 75% 0%;
+  }
+  
+  z:nth-of-type(5) b {
+    transform: translate(-450%,300%) rotate(167deg) translate(0%, 0%) rotate(-175deg);
+  }
+  
+  z:nth-of-type(5) b:before {
+    background-position: 100% 0%;
+  }
+  
+  z:nth-of-type(6) b {
+    transform: translate(-120%, -20%) rotate(22deg) translate(0%) rotate(-15deg);
+  }
+  
+  z:nth-of-type(6) b:before {
+    background-position: 0% 25%;
+  }
+  
+  z:nth-of-type(7) b {
+    transform: translate(0%, -200%) rotate(5deg) translate(0%) rotate(5deg);
+  }
+  
+  z:nth-of-type(7) b:before {
+    background-position: 25% 25%;
+  }
+  
+  z:nth-of-type(8) b {
+    transform: translate(300%, -50%) rotate(16deg) translate(0%) rotate(-21deg);
+  }
+  
+  z:nth-of-type(8) b:before {
+    background-position: 50% 25%;
+  }
+  
+  z:nth-of-type(9) b {
+    transform: translate(-100%, 350%) rotate(21deg) translate(0%) rotate(-27deg);
+  }
+  
+  z:nth-of-type(9) b:before {
+    background-position: 75% 25%;
+  }
+  
+  z:nth-of-type(10) b {
+    transform: translate(-480%, 50%) rotate(170deg) translate(0%) rotate(-165deg);
+  }
+  
+  z:nth-of-type(10) b:before {
+    background-position: 100% 25%;
+  }
+  
+  z:nth-of-type(11) b {
+    transform: translate(300%, -300%) rotate(93deg) translate(0%) rotate(-95deg);
+  }
+  
+  z:nth-of-type(11) b:before {
+    background-position: 0% 50%;
+  }
+  
+  z:nth-of-type(12) b {
+    transform: translate(350%, 50%) rotate(98deg) translate(0%) rotate(-105deg);
+  }
+  
+  z:nth-of-type(12) b:before {
+    background-position: 25% 50%;
+  }
+  
+  z:nth-of-type(13) b {
+    transform: translate(180%, 280%) rotate(157deg) translate(0%) rotate(-153deg);
+  }
+  
+  z:nth-of-type(13) b:before {
+    background-position: 50% 50%;
+  }
+  
+  z:nth-of-type(14) b {
+    transform: translate(-380%, -190%) rotate(115deg) translate(0%) rotate(-106deg);
+  }
+  
+  z:nth-of-type(14) b:before {
+    background-position: 75% 50%;
+  }
+  
+  z:nth-of-type(15) b {
+    transform: translate(0%, -280%) rotate(165deg) translate(0%) rotate(-174deg);
+  }
+  
+  z:nth-of-type(15) b:before {
+    background-position: 100% 50%;
+  }
+  
+  z:nth-of-type(16) b {
+    transform: translate(520%, -300%) rotate(164deg) translate(0%) rotate(-165deg);
+  }
+  
+  z:nth-of-type(16) b:before {
+    background-position: 0% 75%;
+  }
+  
+  z:nth-of-type(17) b {
+    transform: translate(-200%, 150%) rotate(44deg) translate(0%) rotate(-53deg);
+  }
+  
+  z:nth-of-type(17) b:before {
+    background-position: 25% 75%;
+  }
+  
+  z:nth-of-type(18) b {
+    transform: translate(-100%, -450%) rotate(23deg) translate(0%) rotate(-44deg);
+  }
+  
+  z:nth-of-type(18) b:before {
+    background-position: 50% 75%;
+  }
+  
+  z:nth-of-type(19) b {
+    transform: translate(175%, -400%) rotate(159deg) translate(0%) rotate(-153deg);
+  }
+  
+  z:nth-of-type(19) b:before {
+    background-position: 75% 75%;
+  }
+  
+  z:nth-of-type(20) b {
+    transform: translate(150%, 175%) rotate(156deg) translate(0%) rotate(-146deg);
+  }
+  
+  z:nth-of-type(20) b:before {
+    background-position: 100% 75%;
+  }
+  
+  z:nth-of-type(21) b {
+    transform: translate(-50%, 125%) rotate(113deg) translate(0%) rotate(109deg);
+  }
+  
+  z:nth-of-type(21) b:before {
+    background-position: 0% 100%;
+  }
+  
+  z:nth-of-type(22) b {
+    transform: translate(125%, -650%) rotate(171deg) translate(0%) rotate(-72deg);
+  }
+  
+  z:nth-of-type(22) b:before {
+    background-position: 25% 100%;
+  }
+  
+  z:nth-of-type(23) b {
+    transform: translate(325%, -620%) rotate(159deg) translate(0%) rotate(154deg);
+  }
+  
+  z:nth-of-type(23) b:before {
+    background-position: 50% 100%;
+  }
+  
+  z:nth-of-type(24) b {
+    transform: translate(200%, 0%) rotate(173deg) translate(0%) rotate(-164deg);
+  }
+  
+  z:nth-of-type(24) b:before {
+    background-position: 75% 100%;
+  }
+  
+  z:nth-of-type(25) b {
+    transform: translate(-280%, 100%) rotate(38deg) translate(0%) rotate(43deg);
+  }
+  
+  z:nth-of-type(25) b:before {
+    background-position: 100% 100%;
+  }
+  
+  z b {
+    transition: 9999s 9999s;
+  }
+  
+  z:active a {
+    width: 100%;
+    transition: 0s;
+  }
+  
+  z a:hover ~ b {
+    transform: translate(0);
+    filter: none;
+    transition: 0s;
+  } 
+
+
+
+
+/* number of columns/rows, don't forget to adjust the HTML value */
+/* ::-webkit-scrollbar {
+    width: 1px;
+    height: 1px;
+  }
+  
+  ::-webkit-scrollbar-button {
+    width: 1px;
+    height: 1px;
+  } */
+
+  body {
+    background: #547980;
+    color: #fff;
+    font-family: system-ui, sans-serif;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    margin: 0;
+    text-align: center;
+  }
+  
+  p {
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  
+  div {
+    box-sizing: border-box;
+  }
+
+  .horizontal-scroll-wrapper {
+    position: relative;
+    left: -28%;
+    display: block;
+    width: 100%; /* Use a percentage for width */
+    max-height: auto; /* Remove fixed height */
+    margin: 0 auto;
+    padding-top: 1px;
+    background: #abc;
+    overflow-x: hidden;
+    transform: rotate(-90deg) translateY(-90%); /* Use percentage for translateY */
+    transform-origin: right top;
+  }
+
+  .horizontal-scroll-wrapper > div {
+    display: block;
+    padding: 5px;
+    background: #cab;
+    transform: rotate(90deg);
+    transform-origin: right top;
+  }
+
+  .squares {
+    padding: 50% 0 0 0; 
+  }
+
+  .squares > div {
+    width: 50%;
+    height: 50%;
+    margin: 10px auto;
+  }
+ 
+  g {
+    --s: 60%; 
+    --r: 12%;  
+    display: grid;
+    width: fit-content;
+    border: 1px solid;
+    position: relative;
+    top: 100%;  
+    left: 100%;
+    grid: auto-flow var(--s)/repeat(5, var(--s));
+  }
+/*    
+    g:before {
+      content: "Context";
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      position: fixed;
+      top: 5px;
+      left: 5px;
+      width: calc(4*var(--s)*0.5);
+      aspect-ratio: 1;
+      background: var(--i) 0/100% 100%;
+      display: grid;
+      padding: 2px;
+    }
+    
+    z {
+      display: grid;
+      position: relative;
+      pointer-events: none;
+      outline: 1px dashed;
+    }
+    
+    a {
+      grid-area: 1/1;
+      width: 0;
+      transition: 0s 0.2s;
+      pointer-events: initial;
+    }
+    
+    b {
+      grid-area: 1/1;
+      z-index: 2;
+      display: grid;
+      filter: drop-shadow(0 0 2px red) drop-shadow(0 0 2px red);
+      cursor: grab;
+      pointer-events: initial;
+      height: calc(100% + var(--r));
+      width: calc(100% + var(--r));
+      place-self: start end;
+      --m:
+          radial-gradient(var(--r) at calc(50% - var(--r)/2) 0,#0000 98%,#000) var(--r) 0/100% var(--r) no-repeat,
+          radial-gradient(var(--r) at calc(100% - var(--r)) calc(50% - var(--r)/2),#0000 98%,#000) var(--r) 50%/100% calc(100% - 2*var(--r)) no-repeat,
+          radial-gradient(var(--r) at var(--r) calc(50% - var(--r)/2),#000 98%,#0000),
+          radial-gradient(var(--r) at calc(50% + var(--r)/2) calc(100% - var(--r)),#000 98%,#0000);
+    }
+    
+    b:before {
+      content: "";
+      background: var(--i) 0/calc(5*var(--s)) calc(5*var(--s));
+      -webkit-mask: var(--m);
+      mask: var(--m);
+    }
+    
+    z:first-child b {
+      height: calc(100% + var(--r));
+      width: 100%;
+      --m:
+          radial-gradient(var(--r) at 100% calc(50% + var(--r)/2),#0000 98%,#000)
+           0 calc(-1*var(--r)) no-repeat,
+          radial-gradient(var(--r) at 50% calc(100% - var(--r)),#000 98%,#0000) ;
+    }
+    
+    z:nth-child(-n+4):not(:first-child) b {
+      place-self: start end;
+      height: calc(100% + var(--r));
+      width: calc(100% + var(--r));
+      --m:
+          radial-gradient(var(--r) at calc(100% - var(--r)) calc(50% + var(--r)/2),#0000 98%,#000)
+           var(--r) calc(-1*var(--r)) no-repeat,
+          radial-gradient(var(--r) at var(--r) calc(50% - var(--r)/2),#000 98%,#0000),
+          radial-gradient(var(--r) at calc(50% + var(--r)/2) calc(100% - var(--r)),#000 98%,#0000) ;
+    }
+    
+    z:nth-child(5) b {
+      place-self: start end;
+      height: calc(100% + var(--r));
+      width: calc(100% + var(--r));
+      --m:
+          linear-gradient(#000 0 0) var(--r) calc(-1*var(--r)) no-repeat,
+          radial-gradient(var(--r) at var(--r) calc(50% - var(--r)/2),#000 98%,#0000),
+          radial-gradient(var(--r) at calc(50% + var(--r)/2) calc(100% - var(--r)),#000 98%,#0000) ;
+    }
+    
+    z:nth-child(5n+1):not(:first-child):not(:nth-last-child(5)) b {
+      height: calc(100% + var(--r));
+      width: 100%;
+      --m:
+          radial-gradient(var(--r) at 100% calc(50% - var(--r)/2),#0000 98%,#000) 50%/ 100% calc(100% - 2*var(--r)) no-repeat,
+          radial-gradient(var(--r) at 50% 0,#0000 98%,#000) 0 0/ 100% var(--r) no-repeat,
+          radial-gradient(var(--r) at 50% calc(100% - var(--r)),#000 98%,#0000) ;
+    }
+    
+    z:nth-last-child(5) b {
+      height: 100%;
+      width: 100%;
+      --m:
+          radial-gradient(var(--r) at 100% calc(50% - var(--r)),#0000 98%,#000) 0 var(--r) no-repeat,
+          radial-gradient(var(--r) at 50% 0,#0000 98%,#000) 0 0/ 100% var(--r) no-repeat;
+    }
+    
+    z:nth-child(5n):not(:nth-child(5)):not(:last-child) b {
+      place-self: start end;
+      height: calc(100% + var(--r));
+      width: calc(100% + var(--r));
+      --m:
+          radial-gradient(var(--r) at calc(50% - var(--r)/2) var(--r),#0000 98%,#000) var(--r) calc(-1*var(--r)) no-repeat,
+          radial-gradient(var(--r) at var(--r) calc(50% - var(--r)/2),#000 98%,#0000),
+          radial-gradient(var(--r) at calc(50% + var(--r)/2) calc(100% - var(--r)),#000 98%,#0000) ;
+    }
+    
+    z:last-child b {
+      place-self: end;
+      height: 100%;
+      width: calc(100% + var(--r));
+      --m:
+          radial-gradient(var(--r) at calc(50% - var(--r)/2) 0,#0000 98%,#000) var(--r) 0 no-repeat,
+          radial-gradient(var(--r) at var(--r) 50%,#000 98%,#0000) ;
+    }
+    
+    z:nth-last-child(-n+4):not(:last-child) b {
+      place-self: end;
+      height: 100%;
+      width: calc(100% + var(--r));
+      --m:
+          radial-gradient(var(--r) at calc(50% - var(--r)/2) 0,#0000 98%,#000) var(--r) 0/100% var(--r) no-repeat,
+          radial-gradient(var(--r) at calc(100% - var(--r)) calc(50% - var(--r)/2),#0000 98%,#000) var(--r) 100%/100% calc(100% - var(--r)) no-repeat,
+          radial-gradient(var(--r) at var(--r) 50%,#000 98%,#0000) ;
+    }
+    
+    z:nth-of-type(1) b {
+      transform: translate(100%, 100%) rotate(61deg) translate(0%, 200%) rotate(-56deg);
+    }
+    
+    z:nth-of-type(1) b:before {
+      background-position: 0% 0%;
+    }
+    
+    z:nth-of-type(2) b {
+      transform: translate(100%, -120%) rotate(104deg) translate(0%, 0%) rotate(-114deg);
+    }
+    
+    z:nth-of-type(2) b:before {
+      background-position: 25% 0%;
+    }
+    
+    z:nth-of-type(3) b {
+      transform: translate(280%, 100%) rotate(89deg) translate(0%, 0%) rotate(-85deg);
+    }
+    
+    z:nth-of-type(3) b:before {
+      background-position: 50% 0%;
+    }
+    
+    z:nth-of-type(4) b {
+      transform: translate(0%, 430%) rotate(43deg) translate(0%, 0%) rotate(-50deg);
+    }
+    
+    z:nth-of-type(4) b:before {
+      background-position: 75% 0%;
+    }
+    
+    z:nth-of-type(5) b {
+      transform: translate(-450%,300%) rotate(167deg) translate(0%, 0%) rotate(-175deg);
+    }
+    
+    z:nth-of-type(5) b:before {
+      background-position: 100% 0%;
+    }
+    
+    z:nth-of-type(6) b {
+      transform: translate(-120%, -20%) rotate(22deg) translate(0%) rotate(-15deg);
+    }
+    
+    z:nth-of-type(6) b:before {
+      background-position: 0% 25%;
+    }
+    
+    z:nth-of-type(7) b {
+      transform: translate(0%, -200%) rotate(5deg) translate(0%) rotate(5deg);
+    }
+    
+    z:nth-of-type(7) b:before {
+      background-position: 25% 25%;
+    }
+    
+    z:nth-of-type(8) b {
+      transform: translate(300%, -50%) rotate(16deg) translate(0%) rotate(-21deg);
+    }
+    
+    z:nth-of-type(8) b:before {
+      background-position: 50% 25%;
+    }
+    
+    z:nth-of-type(9) b {
+      transform: translate(-100%, 350%) rotate(21deg) translate(0%) rotate(-27deg);
+    }
+    
+    z:nth-of-type(9) b:before {
+      background-position: 75% 25%;
+    }
+    
+    z:nth-of-type(10) b {
+      transform: translate(-480%, 50%) rotate(170deg) translate(0%) rotate(-165deg);
+    }
+    
+    z:nth-of-type(10) b:before {
+      background-position: 100% 25%;
+    }
+    
+    z:nth-of-type(11) b {
+      transform: translate(300%, -300%) rotate(93deg) translate(0%) rotate(-95deg);
+    }
+    
+    z:nth-of-type(11) b:before {
+      background-position: 0% 50%;
+    }
+    
+    z:nth-of-type(12) b {
+      transform: translate(350%, 50%) rotate(98deg) translate(0%) rotate(-105deg);
+    }
+    
+    z:nth-of-type(12) b:before {
+      background-position: 25% 50%;
+    }
+    
+    z:nth-of-type(13) b {
+      transform: translate(180%, 280%) rotate(157deg) translate(0%) rotate(-153deg);
+    }
+    
+    z:nth-of-type(13) b:before {
+      background-position: 50% 50%;
+    }
+    
+    z:nth-of-type(14) b {
+      transform: translate(-380%, -190%) rotate(115deg) translate(0%) rotate(-106deg);
+    }
+    
+    z:nth-of-type(14) b:before {
+      background-position: 75% 50%;
+    }
+    
+    z:nth-of-type(15) b {
+      transform: translate(0%, -280%) rotate(165deg) translate(0%) rotate(-174deg);
+    }
+    
+    z:nth-of-type(15) b:before {
+      background-position: 100% 50%;
+    }
+    
+    z:nth-of-type(16) b {
+      transform: translate(520%, -300%) rotate(164deg) translate(0%) rotate(-165deg);
+    }
+    
+    z:nth-of-type(16) b:before {
+      background-position: 0% 75%;
+    }
+    
+    z:nth-of-type(17) b {
+      transform: translate(-200%, 150%) rotate(44deg) translate(0%) rotate(-53deg);
+    }
+    
+    z:nth-of-type(17) b:before {
+      background-position: 25% 75%;
+    }
+    
+    z:nth-of-type(18) b {
+      transform: translate(-100%, -450%) rotate(23deg) translate(0%) rotate(-44deg);
+    }
+    
+    z:nth-of-type(18) b:before {
+      background-position: 50% 75%;
+    }
+    
+    z:nth-of-type(19) b {
+      transform: translate(175%, -400%) rotate(159deg) translate(0%) rotate(-153deg);
+    }
+    
+    z:nth-of-type(19) b:before {
+      background-position: 75% 75%;
+    }
+    
+    z:nth-of-type(20) b {
+      transform: translate(150%, 175%) rotate(156deg) translate(0%) rotate(-146deg);
+    }
+    
+    z:nth-of-type(20) b:before {
+      background-position: 100% 75%;
+    }
+    
+    z:nth-of-type(21) b {
+      transform: translate(-50%, 125%) rotate(113deg) translate(0%) rotate(109deg);
+    }
+    
+    z:nth-of-type(21) b:before {
+      background-position: 0% 100%;
+    }
+    
+    z:nth-of-type(22) b {
+      transform: translate(125%, -650%) rotate(171deg) translate(0%) rotate(-72deg);
+    }
+    
+    z:nth-of-type(22) b:before {
+      background-position: 25% 100%;
+    }
+    
+    z:nth-of-type(23) b {
+      transform: translate(325%, -620%) rotate(159deg) translate(0%) rotate(154deg);
+    }
+    
+    z:nth-of-type(23) b:before {
+      background-position: 50% 100%;
+    }
+    
+    z:nth-of-type(24) b {
+      transform: translate(200%, 0%) rotate(173deg) translate(0%) rotate(-164deg);
+    }
+    
+    z:nth-of-type(24) b:before {
+      background-position: 75% 100%;
+    }
+    
+    z:nth-of-type(25) b {
+      transform: translate(-280%, 100%) rotate(38deg) translate(0%) rotate(43deg);
+    }
+    
+    z:nth-of-type(25) b:before {
+      background-position: 100% 100%;
+    }
+    
+    z b {
+      transition: 9999s 9999s;
+    }
+    
+    z:active a {
+      width: 100%;
+      transition: 0s;
+    }
+    
+    z a:hover ~ b {
+      transform: translate(0);
+      filter: none;
+      transition: 0s;
+    } */
