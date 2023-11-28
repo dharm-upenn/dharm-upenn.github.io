@@ -1,0 +1,138 @@
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+.part1 {
+  position: relative;
+    height: 140vh;
+    width: auto;
+    background-color: #333;
+    text-align: center; 
+    margin: auto;
+    font-family: 'Outfit', sans-serif;
+
+}
+
+.typewriter{
+    overflow: hidden; 
+    white-space: nowrap; 
+    margin: 0 auto; 
+    letter-spacing: .1em; 
+    animation: 
+      typing 3.5s steps(40, end),
+      blink-caret .75s step-end infinite;
+      font-family: 'Outfit', sans-serif;
+  }
+  
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+  
+.circle {
+    width: 200px;
+    height: 200px;
+    line-height: 200px;
+    border-radius: 50%; 
+    text-align: center;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0 auto 40px;
+}
+  
+  .yellow {
+    background-color: #ff5e00;  
+  }
+  .green {
+    background-color: #ffaa00;
+  }
+  .red {
+    background-color: #ff1900;
+  }
+
+  .blue {
+    background-color: #167919;  
+  }
+  .pink {
+    background-color: #5ab664;
+  }
+  .black {
+    background-color: #14939c;
+  }
+  
+  .feedback {
+    font-size: 14px;
+    color: #b1b1b1;
+  }
+
+  .centering {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  td {
+    padding: 20px;
+  }
+
+.part2 {
+    background-color: #20bf55;
+    background-image:linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+    height: 180vh;
+    width: auto;
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+ }
+.command {
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 50px;
+    padding: 10px;
+}
+
+.commandsmall {
+    text-align: center;
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+}
+
+section {
+    max-width: auto;
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+h1 {
+    color: white;
+}
+
+
+button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    bottom: 0;
+    font-family: 'Outfit', sans-serif;
+    position: relative;
+}
