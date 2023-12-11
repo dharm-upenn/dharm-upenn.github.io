@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    height: 100vh;
+    width:100vw;
+    background-color: #f0f0f0;
+    font-family: 'Montserrat';
+    }
+  
+  canvas {
+    position: fixed;
+    height:100vh;
+    width:100vw;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+  
+  .container {
+    z-index: 1;
+    text-align: center;
+  }
+  
+  h1{
+    font-weight: 400;
+  }
+
+  p{
+    font-weight: 300;
+    font-size: medium;
+  }
+
+  .container h1,
+  .container p,
+  .container input[type="text"],
+  .container button {
+    user-select: none;
+  }
+  
+  input[type="text"] {
+    padding: 8px;
+    margin-top: 10px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #000000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  button:hover {
+    background-color: #585858;
+  }
+  
+  
