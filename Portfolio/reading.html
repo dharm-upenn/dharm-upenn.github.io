@@ -6,6 +6,109 @@
   <title>Reading Responses</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+  <style>
+   body {
+    font-family: 'Montserrat';
+    font-weight: 300;
+    /* height: 500vh; */
+}
+
+body::-webkit-scrollbar{
+    display: none;
+    scrollbar-width: 0px;
+}
+
+   header {
+    color: black;
+    text-align: center;
+  }
+   
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 20px;
+    overflow: hidden; /* Hide overflow for the container */
+  }
+  
+  .reading-list {
+    width: 50%;
+    height: 70vh; /* Set a fixed height for the list */
+    overflow-y: auto; /* Enable vertical scrolling for the list */
+    padding-right: 10px; /* Add padding to accommodate potential scrollbar */
+  }
+  
+  .reading-list ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .reading-list li {
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 5px;
+  }
+  
+  .response-details {
+    width: 55%;
+    display: flex;
+    justify-content: center;
+    height: 70vh; /* Set a fixed height for the response details */
+    overflow-y: auto; /* Enable vertical scrolling for response details */
+    padding-left: 10px; /* Add padding to accommodate potential scrollbar */
+  }
+  
+  .response-info {
+    text-align: center;
+    display: none;
+  }
+  
+  .reading-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .reading-item {
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 5px;
+  }
+  
+  /* Show response info on hover */
+  .reading-item:hover + .response-details .response-info {
+    display: block;
+  }
+  
+  .reading-item:hover {
+    color: blue;
+    text-decoration: underline;
+  }
+  
+  /* Hide scrollbar for Webkit browsers */
+  .reading-list::-webkit-scrollbar,
+  .response-details::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+  
+  /* Media query for responsiveness */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .reading-list,
+    .response-details {
+      width: 100%;
+      height: auto; /* Reset height for responsiveness */
+      max-height: 70vh; /* Set maximum height for responsiveness */
+      overflow-y: auto; /* Enable scrolling for smaller screens */
+    }
+  }
+</style>
 <body>
   <main>
     <header>
