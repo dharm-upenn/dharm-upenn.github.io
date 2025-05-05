@@ -237,12 +237,12 @@ faceMesh.setOptions({
             scanComplete = true;
         }
 
-        if (scanComplete) {
-            canvasCtx.fillStyle = "white";
-            canvasCtx.font = "18px Arial";
-            canvasCtx.fillText(`Face Shape: ${storedShape}`, 10, 30);
-            canvasCtx.fillText(`Recommended: ${storedRecommendation}`, 10, 60);
-        }
+        // if (scanComplete) {
+        //     canvasCtx.fillStyle = "white";
+        //     canvasCtx.font = "18px Arial";
+        //     canvasCtx.fillText(`Face Shape: ${storedShape}`, 10, 30);
+        //     canvasCtx.fillText(`Recommended: ${storedRecommendation}`, 10, 60);
+        // }
         }
     }
 
