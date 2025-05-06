@@ -271,9 +271,9 @@ faceMesh.setOptions({
     });
 
 
-navigator.mediaDevices.enumerateDevices().then(devices => {
-      console.log(devices.filter(d => d.kind === 'videoinput'));
-    });
+// navigator.mediaDevices.enumerateDevices().then(devices => {
+//       console.log(devices.filter(d => d.kind === 'videoinput'));
+//     });
     
 
 // // Webcam input
@@ -309,25 +309,48 @@ navigator.mediaDevices.enumerateDevices().then(devices => {
 });
 
 // Start camera based on selected deviceId
-let currentCamera;
+let currentStream = null;
 
-function startSelectedCamera() {
-  if (currentCamera) {
-    currentCamera.stop();
+async function startSelectedCamera() {
+  const selectedDeviceId = cameraSelect.value;
+
+  // Stop previous stream
+  if (currentStream) {
+    currentStream.getTracks().forEach(track => track.stop());
   }
 
-  const selectedDeviceId = cameraSelect.value;
-  currentCamera = new Camera(videoElement, {
-    onFrame: async () => {
-      await faceMesh.send({ image: videoElement });
-    },
-    width: 640,
-    height: 480,
-    deviceId: selectedDeviceId
-  });
+  try {
+    currentStream = await navigator.mediaDevices.getUserMedia({
+      video: { deviceId: { exact: selectedDeviceId } }
+    });
 
-  currentCamera.start();
+    videoElement.srcObject = currentStream;
+
+    videoElement.onloadedmetadata = () => {
+      videoElement.play();
+      scanningLoop(); // start scanning loop
+    };
+  } catch (err) {
+    console.error("Error accessing selected camera:", err);
+  }
 }
+
+let isSendingFrame = false;
+function scanningLoop() {
+  if (!isSendingFrame && allowScan) {
+    isSendingFrame = true;
+    faceMesh.send({ image: videoElement }).then(() => {
+      isSendingFrame = false;
+    });
+  }
+  requestAnimationFrame(scanningLoop);
+}
+
+function scanFrame() {
+  faceMesh.send({ image: videoElement });
+  requestAnimationFrame(scanFrame);
+}
+
 
 // Listen to dropdown changes
 cameraSelect.addEventListener('change', startSelectedCamera);
