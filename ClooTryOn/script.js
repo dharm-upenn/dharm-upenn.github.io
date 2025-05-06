@@ -271,8 +271,12 @@ faceMesh.setOptions({
     });
 
 
+navigator.mediaDevices.enumerateDevices().then(devices => {
+      console.log(devices.filter(d => d.kind === 'videoinput'));
+    });
+    
 
-// Webcam input
+// // Webcam input
 // const camera = new Camera(videoElement, {
 //   onFrame: async () => {
 //     await faceMesh.send({ image: videoElement });
@@ -282,19 +286,52 @@ faceMesh.setOptions({
 // });
 // camera.start();
 
-const preferredDeviceId = "2d3e742c0779e03029d483cb925619934233d6617e6fc7fd2a5979a23401c270";  // e.g., "a1b2c3d4e5f6g7h8i9"
 
-const camera = new Camera(videoElement, {
-  onFrame: async () => {
-    await faceMesh.send({ image: videoElement });
-  },
-  width: 640,
-  height: 480,
-  deviceId: preferredDeviceId
+const cameraSelect = document.getElementById('cameraSelect');
+
+// Populate the dropdown with available video input devices
+navigator.mediaDevices.enumerateDevices().then(devices => {
+  const videoDevices = devices.filter(device => device.kind === 'videoinput');
+  videoDevices.forEach(device => {
+    const option = document.createElement('option');
+    option.value = device.deviceId;
+    option.text = device.label || `Camera ${cameraSelect.length + 1}`;
+    cameraSelect.appendChild(option);
+  });
+
+  // Auto-select the camera with your specific ID if it exists
+  const preferredDevice = videoDevices.find(d => d.label.includes('32e4:0234') || d.deviceId.includes('32e4:0234'));
+  if (preferredDevice) {
+    cameraSelect.value = preferredDevice.deviceId;
+  }
+
+  startSelectedCamera(); // Start the selected camera
 });
 
-camera.start();
+// Start camera based on selected deviceId
+let currentCamera;
 
+function startSelectedCamera() {
+  if (currentCamera) {
+    currentCamera.stop();
+  }
+
+  const selectedDeviceId = cameraSelect.value;
+  currentCamera = new Camera(videoElement, {
+    onFrame: async () => {
+      await faceMesh.send({ image: videoElement });
+    },
+    width: 640,
+    height: 480,
+    deviceId: selectedDeviceId
+  });
+
+  currentCamera.start();
+}
+
+// Listen to dropdown changes
+cameraSelect.addEventListener('change', startSelectedCamera);
+ 
 
 //Glasses Overlay
 // const glassesImg = new Image();
@@ -311,8 +348,8 @@ const glassesMap = {
 const glassesImgs = {};
   for (let shape in glassesMap) {
     glassesImgs[shape] = new Image();
-    // glassesImgs[shape].src = glassesMap[shape];
-    glassesImgs[shape].src = `images/${glassesMap[shape]}`;
+    glassesImgs[shape].src = glassesMap[shape];
+    // glassesImgs[shape].src = `images/${glassesMap[shape]}`;
 }
 
 
