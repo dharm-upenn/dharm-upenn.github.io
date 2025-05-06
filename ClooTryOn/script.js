@@ -273,14 +273,28 @@ faceMesh.setOptions({
 
 
 // Webcam input
+// const camera = new Camera(videoElement, {
+//   onFrame: async () => {
+//     await faceMesh.send({ image: videoElement });
+//   },
+//   width: 640,
+//   height: 480
+// });
+// camera.start();
+
+const preferredDeviceId = "2d3e742c0779e03029d483cb925619934233d6617e6fc7fd2a5979a23401c270";  // e.g., "a1b2c3d4e5f6g7h8i9"
+
 const camera = new Camera(videoElement, {
   onFrame: async () => {
     await faceMesh.send({ image: videoElement });
   },
   width: 640,
-  height: 480
+  height: 480,
+  deviceId: preferredDeviceId
 });
+
 camera.start();
+
 
 //Glasses Overlay
 // const glassesImg = new Image();
